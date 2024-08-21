@@ -4,17 +4,13 @@ import time
 
 # Important variables
 
-old_path = "..\\res\\pokemon"
+old_path = "..\res\pokemon"
 
-female_back = "a"
-female_front = "a"
-male_back = "a"
-male_front = "a"
+# Functions
 
-# Main code
 def their_political_opinion():
     was_answered = False
-    for i in range(1, 6):
+    for i in range(1, 7):
         side = input("Who are you going to purge then? ('the old ones'/'the copy cat younglings'/'both')\n")
         if side == "the old ones":
             was_answered = True
@@ -29,7 +25,7 @@ def their_political_opinion():
             time.sleep(1)
             return 3
         else:
-            if i <= 3:
+            if i <= 4:
                 print("I don't think that I heard that correctly... \n")
             elif i == 5:
                 print("Now im pretty shure your just messing with me! Strike 1!\n")
@@ -41,13 +37,13 @@ def their_political_opinion():
                     return 4
     if was_answered == False:
         print("We don't want your kind here!")
-        os._exit()
+        exit()
 
 
 def opperation_keep_the_old_ones_alive(old_path, new_path):
+    # Deletes all the newer pokemons that have the original version with them 
     el_original = []
     el_gen_alpha = []
-    el_copycats = []
     os.chdir(old_path)
     for name in os.listdir():
         el_original.append(name)
@@ -56,14 +52,17 @@ def opperation_keep_the_old_ones_alive(old_path, new_path):
         el_gen_alpha.append(name)
         for potential_copycateds in el_original:
             if name == potential_copycateds:
-                 
+                el_gen_alpha.remove(name)
+                os.rmdir(name)
                 print("Die! ")
+    return el_gen_alpha
+    # Takes care of every mention of the pokemons in the code
 
 
 def opperation_keep_the_old_ones_dead(old_path, new_path):
+    # Deletes all the original pokemons that have a newer version
     el_original = []
     el_gen_alpha = []
-    el_copycats = []
     os.chdir(new_path)
     for name in os.listdir():
         el_gen_alpha.append(name)
@@ -73,14 +72,41 @@ def opperation_keep_the_old_ones_dead(old_path, new_path):
         for potential_copycat in el_original:
             if name == potential_copycateds:
                 el_copycats.append(potential_copycateds)
+    # Takes care of every mention of the pokemons in the code
+
+def god_is_dead(old_path, new_path):
+    # Deletes all of them!
+    all = []
+    os.chdir(new_path)
+    for name in os.listdir():
+        os.rmdir(name)
+        all.append(name)
+    os.chdir(old_path)
+    for name in os.listdir():
+        os.rmdir(name)
+        all.append(name)
+    # Takes care of every mention of the pokemons in the code
+
+def rainbow(old_path, new_path):
+    # Lists all of them
+    all = []
+    os.chdir(new_path)
+    for name in os.listdir():
+        all.append(name)
+    os.chdir(old_path)
+    for name in os.listdir():
+        all.append(name)
+    return all
+    # Takes care of every mention of the pokemons in the code
+
             
+# Main code
 
 # Start Dialogue
 
 print("Welcome to the Setup Wizard!\n")
 time.sleep(1)
-print("Setup Wizard (SW for short) : Thank you for welcoming me. I am the Image Setup Wizard(64 by 64 images only (them being next to each other is accepted))!")
-time.sleep(2)
+print("Pyromaniac Setup Wizard (PSW for short) : Thank you for welcoming me. I am the pyromaniac setup wizard")
 input("So... You wanna make up a pertext to commit genocide on weird digital creatures huuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu? (Y/N) : ")
 print("That was a rethorical question... Of course you do!")
 time.sleep(1)
@@ -95,8 +121,11 @@ while ans:
 # The pokemons they will keep
 
 their_political_opinions = their_political_opinion()
+if their_political_opinions == 1:
+    opperation_keep_the_old_ones_dead(old_path, new_path)
 if their_political_opinions == 2:
     opperation_keep_the_old_ones_alive(old_path, new_path)
-
-# Functions
-
+if their_political_opinions == 3:
+    god_is_dead(old_path, new_path)
+if their_political_opinions == 4:
+    print(rainbow(old_path, new_path))
