@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import os
 import argparse
 import json
 import pathlib
@@ -33,7 +34,16 @@ output_dir = pathlib.Path(args.output_dir)
 
 private_dir.mkdir(parents=True, exist_ok=True)
 
-NUM_POKEMON = 494
+# Adds the new pokemons to the pokemon
+mew_path = os.getcwd() + ".."
+el_new = 0
+os.chdir(mew_path)
+mew_path = os.getcwd() + "\\res\\pokemon"
+os.chdir(mew_path)
+for name in os.listdir():
+    el_new += 1
+
+NUM_POKEMON = 1 + el_new
 
 pokedex = [0 for i in range(NUM_POKEMON)]
 

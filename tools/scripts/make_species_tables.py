@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import os
 import argparse
 import json
 import pathlib
@@ -30,8 +31,16 @@ with open(args.tutorable_moves, 'r', encoding='utf-8') as f:
     tutors_schema = json.load(f)
 
 moveset = [Move[m] for m in tutors_schema["moves"].keys()]
+# Adds the new pokemons to the pokemon
+mew_path = os.getcwd() + ".."
+el_new = 0
+os.chdir(mew_path)
+mew_path = os.getcwd() + "\\res\\pokemon"
+os.chdir(mew_path)
+for name in os.listdir():
+    el_new += 1
 
-NATIONAL_DEX_COUNT = 493
+NATIONAL_DEX_COUNT = el_new
 
 FORM_INDICES = {
     'DEOXYS' : {
