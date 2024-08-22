@@ -4,8 +4,9 @@ import time
 
 # Important variables
 
-old_path = "..\res\pokemon"
-
+old_path = "./../res/pokemon"
+new_path = "./pokemon"
+prefix = "0"
 # Functions
 
 def their_political_opinion():
@@ -34,6 +35,7 @@ def their_political_opinion():
                 if side == "I am not messing with you, i just want you to keep them alive":
                     print("Okay, i am not here to judge.")
                     time.sleep(1)
+                    prefix = input("What will the prefix be? (The name before each pokemon) !This feature is not yet implemented! : ")
                     return 4
     if was_answered == False:
         print("We don't want your kind here!")
@@ -69,9 +71,12 @@ def opperation_keep_the_old_ones_dead(old_path, new_path):
     os.chdir(old_path)
     for name in os.listdir():
         el_original.append(name)
-        for potential_copycat in el_original:
-            if name == potential_copycateds:
-                el_copycats.append(potential_copycateds)
+        for potential_copycat in el_gen_alpha:
+            if name == potential_copycat:
+                el_original.remove(name)
+                os.rmdir(name)
+                print("Die! ")
+    return el_gen_alpha
     # Takes care of every mention of the pokemons in the code
 
 def god_is_dead(old_path, new_path):
@@ -85,6 +90,7 @@ def god_is_dead(old_path, new_path):
     for name in os.listdir():
         os.rmdir(name)
         all.append(name)
+    return None
     # Takes care of every mention of the pokemons in the code
 
 def rainbow(old_path, new_path):
@@ -111,12 +117,6 @@ input("So... You wanna make up a pertext to commit genocide on weird digital cre
 print("That was a rethorical question... Of course you do!")
 time.sleep(1)
 
-new_path = "0"
-ans = True
-while ans:
-    new_path = input("What is the path to the new peoples vilage? : ")
-    if os.path.isdir(new_path):
-        ans = False
 
 # The pokemons they will keep
 
