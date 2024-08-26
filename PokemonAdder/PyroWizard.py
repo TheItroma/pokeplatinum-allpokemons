@@ -41,8 +41,6 @@ def their_political_opinion():
         print("We don't want your kind here!")
         exit()
 
-def opperation_brain_damage(pokemon):
-    
 
 
 def opperation_keep_the_old_ones_alive(old_path, new_path):
