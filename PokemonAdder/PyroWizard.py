@@ -4,8 +4,9 @@ import time
 
 # Important variables
 
-old_path = "./../res/pokemon"
-new_path = "./pokemon"
+
+old_path = os.path.join(os.getcwd(), os.path.join('..', 'res', 'pokemon'))
+new_path = os.path.join(os.getcwd(),'pokemon')
 prefix = "0"
 # Functions
 
